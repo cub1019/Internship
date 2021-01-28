@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="grid-x">
+        <div class="small-12 cell">
+            <h3>{{task.id}} | {{task.title}}</h3>
+            <a href="/tasks/modify/{{task.id}}" class="button">Modify</a>
+
+        </div>
+    </div>
+    <div class="grid-x">
+    <div class="small-12 cell">
+    {% for category in task.category %}
+    <h4>{{category.name}}</h4>
+    {% endfor %}
+    <div class="grid-x">
+        <div class="small-12 cell">
+            {{task.description}}
+        </div>
+        <div class="grid-x">
+        <div class="small-12 cell">
+        {% for person in task.People %}
+        <h4>{{person.name}}</h4>
+        {% endfor %}
+    </div>
+    {% endblock %}

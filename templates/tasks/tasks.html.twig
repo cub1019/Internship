@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="grid-x">
+        <div class="small-12 cell">
+            <h1>My cool tasks:</h1>
+        </div>
+    </div>
+    <div class="grid-x">
+        <div class="small-12 cell">
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            ID
+                        </td>
+                        <td>
+                            Title
+                        </td>
+                        <td>
+                            Action
+                        </td>
+                        <td>
+                          Categories
+                        </td>
+                        <td>
+                          Person
+                          </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <td>
+                                {{task.id}}
+                            </td>
+                            <td>
+                                {{task.title}}
+                            </td>
+                            <td>
+                              {% for category in task.category %}
+                              {{category.name}}
+                              {% endfor %}
+                              </td>
+                            <td>
+                                <a href="/tasks/{{task.id}}" class="button">View</a>
+                            </td>
+                            <td>
+                            {% for person in task.People %}
+                            <h4>{{person.name}}</h4>
+                            {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}
